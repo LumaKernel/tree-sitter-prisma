@@ -17,3 +17,8 @@ It's not so serious project. I welcome any PRs.
 
 - Overall are licensed under [MIT](./LICENSE).
 - Additionally, [types/tree-sitter-sdk.d.ts](./types/tree-sitter-sdk.d.ts) is dual-licensed under the UNLINCENSE. This means you can copy-paste that file and edit without any attribution.
+
+## Digression
+
+- I found https://github.com/victorhqc/tree-sitter-prisma .
+- I'm trying to use with nvim-tree-sitter, but not succeeded yet...
