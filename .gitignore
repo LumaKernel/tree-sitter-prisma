@@ -16,5 +16,6 @@ package-lock.json
 yarn.lock
 
 index.js
+grammar.js
 src/
 build/
