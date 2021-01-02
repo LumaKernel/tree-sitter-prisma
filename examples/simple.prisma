@@ -1,0 +1,82 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+/// My post
+model Post {
+  id        Int     @id @default(autoincrement())
+  // title     String
+  content   String @default("# Heading \n\"Your first Article\"\n\\\\hello\\\\")
+  published Boolean @default(false)
+  author    User?   @relation("AuthorRelation", fields: [authorId], references: [id])
+  authorId  Int?
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  posts Post[]
+}
+
+enum Role {
+  Admin
+  Normal
+}
+
+model PostUserStatus {
+  post Post @relation(fields: [postId], references: [id])
+  postId Int
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  starred Boolean @default(false)
+
+  @@unique([postId, userId])
+}
+
+// Reference: https://www.prisma.io/docs/concepts/components/preview-features/native-types/native-types-mappings/
+model Sample0 {
+  text      String    @db.Text
+  char      String    @db.Char(22)
+  varchar   String    @db.VarChar(100)
+  bit       String    @db.Bit
+  varbit    String    @db.VarBit
+  uuid      String    @db.Uuid
+}
+model Sample1 {
+  varchar       String    @db.VarChar(100)
+  text          String    @db.Text
+  char          String    @db.Char(20)
+  tinyText      String    @db.TinyText
+  mediumText    String    @db.MediumText
+  longText      String    @db.LongText
+}
+
+model Sample2 {
+  char       String    @db.Char(20)
+  nchar      String    @db.NChar(40)
+  varchar    String    @db.VarChar(189)
+  nvarchar   String    @db.NVarChar(100)
+  // Also accept 'Max'
+  max_varchar    String    @db.VarChar(Max)
+  max_nvarchar   String    @db.NVarChar(Max)
+  ntext    String    @db.NText
+  text     String    @db.Text
+  xml      String    @db.Xml
+}
+model Sample3 {
+  decimal        Decimal    @db.Decimal(2,2)
+  numeric        Decimal    @db.Numeric(1,2)
+}
+
+model Artist {
+  id             Int      @id @default(autoincrement())
+  album_id       Int
+  favorite_album Album    @relation(fields: [album_id], references: [id], name: "FK_fav_album")
+  albums Album[]
+}

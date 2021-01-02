@@ -1,0 +1,33 @@
+{
+  "include": [
+    "ts-src/**/*.ts",
+    "types/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "sourceMap": true,
+    "inlineSources": true,
+    "sourceRoot": "/",
+    "allowJs": true,
+    "isolatedModules": false,
+    "module": "CommonJS",
+    "noEmit": true,
+    "target": "ES2020",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "remove",
+    "preserveConstEnums": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "lib": [],
+    "useDefineForClassFields": true,
+    "baseUrl": "."
+  }
+}
