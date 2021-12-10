@@ -1,21 +1,35 @@
+const configureBase = require('@luma-dev/eslint-config-base/configure');
+
+const config = { __dirname };
+
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
-  ignorePatterns: ['index.js', 'grammar.js', 'src', 'package-lock.json'],
-
+  extends: ['@luma-dev/base'],
   overrides: [
+    ...configureBase(config),
     {
-      files: '*.json',
-      plugins: ['json-format'],
+      files: 'grammar.js',
 
-      settings: {
-        'json/json-with-comments-files': [],
+      globals: {
+        grammar: 'readonly',
+        repeat: 'readonly',
+        repeat1: 'readonly',
+        seq: 'readonly',
+        choice: 'readonly',
+        optional: 'readonly',
+        token: 'readonly',
+        field: 'readonly',
+        alias: 'readonly',
       },
-    },
-    {
-      files: '*.js',
 
-      extends: [
-        'airbnb-base',
-      ],
+      rules: {
+        'no-unused-vars': [
+          'error',
+          {
+            argsIgnorePattern: '^_|^\\$$',
+          },
+        ],
+      },
 
       env: {
         commonjs: true,
@@ -24,17 +38,13 @@ module.exports = {
     {
       files: '*.ts',
 
-      parserOptions: { project: './tsconfig.json' },
-
-      extends: [
-        'airbnb-typescript-prettier',
-        'typestrict',
-      ],
-
       rules: {
-        '@typescript-eslint/no-unused-vars': ['error', {
-          argsIgnorePattern: '^_|^\\$$',
-        }],
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          {
+            argsIgnorePattern: '^_|^\\$$',
+          },
+        ],
         'no-underscore-dangle': 'off',
       },
 

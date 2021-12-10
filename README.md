@@ -1,5 +1,7 @@
 # tree-sitter-prisma
 
+[![Luma Style Guide](https://img.shields.io/badge/styled%20with-luma-%23c5ebeb?style=flat-square)](https://github.com/luma-dev/luma-style-guide#readme)
+
 [tree-sitter](https://github.com/tree-sitter/tree-sitter) parser definitions for [prisma](https://github.com/prisma/prisma) schema.
 
 It's not so serious project. I welcome any PRs.
@@ -16,7 +18,7 @@ It's not so serious project. I welcome any PRs.
 ## License
 
 - Overall are licensed under [MIT](./LICENSE).
-- Additionally, [types/tree-sitter-sdk.d.ts](./types/tree-sitter-sdk.d.ts) is dual-licensed under the UNLINCENSE. This means you can copy-paste that file and edit without any attribution.
+- Additionally, [types/tree-sitter-sdk.d.ts](./types/tree-sitter-sdk.d.ts) is dual-licensed under the UNLINCENSE. This means you can copy and paste this file and edit without any attribution.
 
 ## Digression
 
