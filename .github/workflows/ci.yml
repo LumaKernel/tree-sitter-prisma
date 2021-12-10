@@ -81,4 +81,4 @@ jobs:
       - if: ${{ github.event_name == 'push' && github.event.ref == 'refs/heads/master' }}
         run: |
           cargo login ${{ secrets.CARGO_TOKEN }}
-          cargo publish --allow-dirty
+          cargo publish
