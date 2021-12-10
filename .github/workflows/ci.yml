@@ -69,7 +69,16 @@ jobs:
       - run: pnpm run lint
       - run: pnpm run test
       - run: cargo test
+  publish-rust:
+    name: Publish Rust
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hecrj/setup-rust-action@v1
+        with:
+          rust-version: 1.57.0
       - if: ${{ github.event_name == 'push' && github.event.ref == 'refs/heads/master' }}
         run: |
           cargo login ${{ secrets.CARGO_TOKEN }}
-          cargo publish
+          cargo publish --allow-dirty
