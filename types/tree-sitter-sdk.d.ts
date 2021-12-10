@@ -41,15 +41,12 @@ declare function grammar<RuleNames extends string>(
     conflicts?: ($: Record<RuleNames | ExtraRuleNames, RuleSymbol>) => Rule[][];
     supertypes?: ($: Record<RuleNames | ExtraRuleNames, RuleSymbol>) => Rule[];
     inline?: ($: Record<RuleNames | ExtraRuleNames, RuleSymbol>) => Rule[];
-    rules: Record<
-      RuleNames,
-      ($: Record<RuleNames | ExtraRuleNames, RuleSymbol>) => Rule
-    >;
+    rules: Record<RuleNames, ($: Record<RuleNames | ExtraRuleNames, RuleSymbol>) => Rule>;
   } & (ExtraRuleNames extends never
     ? unknown
     : {
         externals: ($: Record<ExtraRuleNames, RuleSymbol>) => Rule[];
-      })
+      }),
 ): unknown;
 
 declare function repeat(rule: Rule): RuleSymbol;
