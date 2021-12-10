@@ -69,3 +69,7 @@ jobs:
       - run: pnpm run lint
       - run: pnpm run test
       - run: cargo test
+      - if: ${{ github.event_name == 'push' && github.event.ref == 'refs/heads/master' }}
+        run: |
+          cargo login ${{ secrets.CARGO_TOKEN }}
+          cargo publish
